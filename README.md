@@ -404,6 +404,24 @@ If you put a `.terraform-version` file on your project root, or in your home dir
 
 Note, that [TFENV\_TERRAFORM\_VERSION environment variable](#tfenv_terraform_version) can be used to override version, specified by `.terraform-version` file.
 
+### tfenv local
+
+Sets a local directory Terraform version by writing the version
+name to a `.terraform-version` file in the current directory. This version
+overrides the global version.
+
+```console
+% tfenv local 0.12.2
+```
+
+You can also unset the local version.
+
+```console
+% tfenv local --unset
+```
+
+### Examples
+
 ```console
 $ cat .terraform-version
 0.6.16
@@ -414,12 +432,12 @@ Terraform v0.6.16
 Your version of Terraform is out of date! The latest version
 is 0.7.3. You can update by downloading from www.terraform.io
 
-$ echo 0.7.3 > .terraform-version
+$ tfenv local 0.7.3
 
 $ terraform version
 Terraform v0.7.3
 
-$ echo latest:^0.8 > .terraform-version
+$ tfenv local latest:^0.8
 
 $ terraform version
 Terraform v0.8.8
